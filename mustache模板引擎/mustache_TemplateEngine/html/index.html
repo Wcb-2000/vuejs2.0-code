@@ -1,0 +1,54 @@
+<!--
+ * @Author: 吴楚标
+ * @Date: 2021-07-17 19:41:42
+ * @LastEditors: 吴楚标
+ * @LastEditTime: 2021-07-19 21:50:40
+ * @Description: 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <!-- 最终打包的文件（虚拟） -->
+  <script src="/xuni/bundle.js"></script>  
+
+  <script>
+      // 模板字符串
+      var templateStr = `
+          <ul>
+            {{#arr}}
+              <li>
+                {{name}}的爱好是：
+                <ol>
+                  {{#hobbies}}
+                  <li>{{.}}</li>
+                  {{/hobbies}}
+                </ol>
+              </li>
+            {{/arr}}
+        </ul>`;
+      // 数据
+      var data = {
+        arr:[ 
+        {"name": "小明", "age": 12, "sex": "男",'hobbies':['游泳','跑步']},
+        {"name": "小红", "age": 11, "sex": "女",'hobbies':['游泳']},
+        {"name": "小强", "age": 13, "sex": "男",'hobbies':['游泳','跑步']}
+        ]
+      };
+
+      // 调用render
+      var domStr = templateEngine.render(templateStr, data);
+      
+      // 渲染上树
+      var container = document.getElementById('container');
+      container.innerHTML = domStr;
+  </script>
+</body>
+</html>

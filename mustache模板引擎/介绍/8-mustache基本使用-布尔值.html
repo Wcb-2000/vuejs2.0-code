@@ -1,0 +1,38 @@
+<!--
+ * @Author: 吴楚标
+ * @Date: 2021-07-17 14:21:33
+ * @LastEditors: 吴楚标
+ * @LastEditTime: 2021-07-17 15:07:34
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="../jslib/mustache.js"></script>
+  <script>
+     var templateStr = `
+     <ul>
+      {{#m}}
+        <h1>你好<h2>
+      {{/m}}
+     </ul>
+     `;
+
+     var data = {
+       m:false
+     };
+     
+     var domStr = Mustache.render(templateStr, data);
+    //  console.log(domStr);
+    var container = document.getElementById('container');
+    container.innerHTML = domStr;
+  </script>
+</body>
+</html>
